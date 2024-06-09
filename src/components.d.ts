@@ -14,7 +14,19 @@ export namespace Components {
     }
     interface AmbAmbulanceWlList {
     }
-    interface XcokTest {
+    interface AmbDeleteAllergyRecord {
+        "allergyId": string;
+    }
+    interface AmbMedRecordsAccess {
+        "patientId": string;
+    }
+    interface AmbMedicalApp {
+        "basePath": string;
+    }
+    interface AmbRecordVaccination {
+    }
+    interface AmbUpdateLabResults {
+        "recordId": string;
     }
 }
 export interface AmbAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
@@ -66,17 +78,45 @@ declare global {
         prototype: HTMLAmbAmbulanceWlListElement;
         new (): HTMLAmbAmbulanceWlListElement;
     };
-    interface HTMLXcokTestElement extends Components.XcokTest, HTMLStencilElement {
+    interface HTMLAmbDeleteAllergyRecordElement extends Components.AmbDeleteAllergyRecord, HTMLStencilElement {
     }
-    var HTMLXcokTestElement: {
-        prototype: HTMLXcokTestElement;
-        new (): HTMLXcokTestElement;
+    var HTMLAmbDeleteAllergyRecordElement: {
+        prototype: HTMLAmbDeleteAllergyRecordElement;
+        new (): HTMLAmbDeleteAllergyRecordElement;
+    };
+    interface HTMLAmbMedRecordsAccessElement extends Components.AmbMedRecordsAccess, HTMLStencilElement {
+    }
+    var HTMLAmbMedRecordsAccessElement: {
+        prototype: HTMLAmbMedRecordsAccessElement;
+        new (): HTMLAmbMedRecordsAccessElement;
+    };
+    interface HTMLAmbMedicalAppElement extends Components.AmbMedicalApp, HTMLStencilElement {
+    }
+    var HTMLAmbMedicalAppElement: {
+        prototype: HTMLAmbMedicalAppElement;
+        new (): HTMLAmbMedicalAppElement;
+    };
+    interface HTMLAmbRecordVaccinationElement extends Components.AmbRecordVaccination, HTMLStencilElement {
+    }
+    var HTMLAmbRecordVaccinationElement: {
+        prototype: HTMLAmbRecordVaccinationElement;
+        new (): HTMLAmbRecordVaccinationElement;
+    };
+    interface HTMLAmbUpdateLabResultsElement extends Components.AmbUpdateLabResults, HTMLStencilElement {
+    }
+    var HTMLAmbUpdateLabResultsElement: {
+        prototype: HTMLAmbUpdateLabResultsElement;
+        new (): HTMLAmbUpdateLabResultsElement;
     };
     interface HTMLElementTagNameMap {
         "amb-ambulance-wl-app": HTMLAmbAmbulanceWlAppElement;
         "amb-ambulance-wl-editor": HTMLAmbAmbulanceWlEditorElement;
         "amb-ambulance-wl-list": HTMLAmbAmbulanceWlListElement;
-        "xcok-test": HTMLXcokTestElement;
+        "amb-delete-allergy-record": HTMLAmbDeleteAllergyRecordElement;
+        "amb-med-records-access": HTMLAmbMedRecordsAccessElement;
+        "amb-medical-app": HTMLAmbMedicalAppElement;
+        "amb-record-vaccination": HTMLAmbRecordVaccinationElement;
+        "amb-update-lab-results": HTMLAmbUpdateLabResultsElement;
     }
 }
 declare namespace LocalJSX {
@@ -90,13 +130,29 @@ declare namespace LocalJSX {
     interface AmbAmbulanceWlList {
         "onEntry-clicked"?: (event: AmbAmbulanceWlListCustomEvent<string>) => void;
     }
-    interface XcokTest {
+    interface AmbDeleteAllergyRecord {
+        "allergyId"?: string;
+    }
+    interface AmbMedRecordsAccess {
+        "patientId"?: string;
+    }
+    interface AmbMedicalApp {
+        "basePath"?: string;
+    }
+    interface AmbRecordVaccination {
+    }
+    interface AmbUpdateLabResults {
+        "recordId"?: string;
     }
     interface IntrinsicElements {
         "amb-ambulance-wl-app": AmbAmbulanceWlApp;
         "amb-ambulance-wl-editor": AmbAmbulanceWlEditor;
         "amb-ambulance-wl-list": AmbAmbulanceWlList;
-        "xcok-test": XcokTest;
+        "amb-delete-allergy-record": AmbDeleteAllergyRecord;
+        "amb-med-records-access": AmbMedRecordsAccess;
+        "amb-medical-app": AmbMedicalApp;
+        "amb-record-vaccination": AmbRecordVaccination;
+        "amb-update-lab-results": AmbUpdateLabResults;
     }
 }
 export { LocalJSX as JSX };
@@ -106,7 +162,11 @@ declare module "@stencil/core" {
             "amb-ambulance-wl-app": LocalJSX.AmbAmbulanceWlApp & JSXBase.HTMLAttributes<HTMLAmbAmbulanceWlAppElement>;
             "amb-ambulance-wl-editor": LocalJSX.AmbAmbulanceWlEditor & JSXBase.HTMLAttributes<HTMLAmbAmbulanceWlEditorElement>;
             "amb-ambulance-wl-list": LocalJSX.AmbAmbulanceWlList & JSXBase.HTMLAttributes<HTMLAmbAmbulanceWlListElement>;
-            "xcok-test": LocalJSX.XcokTest & JSXBase.HTMLAttributes<HTMLXcokTestElement>;
+            "amb-delete-allergy-record": LocalJSX.AmbDeleteAllergyRecord & JSXBase.HTMLAttributes<HTMLAmbDeleteAllergyRecordElement>;
+            "amb-med-records-access": LocalJSX.AmbMedRecordsAccess & JSXBase.HTMLAttributes<HTMLAmbMedRecordsAccessElement>;
+            "amb-medical-app": LocalJSX.AmbMedicalApp & JSXBase.HTMLAttributes<HTMLAmbMedicalAppElement>;
+            "amb-record-vaccination": LocalJSX.AmbRecordVaccination & JSXBase.HTMLAttributes<HTMLAmbRecordVaccinationElement>;
+            "amb-update-lab-results": LocalJSX.AmbUpdateLabResults & JSXBase.HTMLAttributes<HTMLAmbUpdateLabResultsElement>;
         }
     }
 }

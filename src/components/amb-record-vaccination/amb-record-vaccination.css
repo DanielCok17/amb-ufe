@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  padding: 16px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+md-filled-text-field {
+  margin-bottom: 16px;
+}
