@@ -7,7 +7,7 @@ import { Component, Event, EventEmitter, Host, Prop, State, h } from '@stencil/c
   shadow: true,
 })
 export class AmbAmbulanceWlList {
-  @Event({ eventName: "entry-clicked"}) entryClicked: EventEmitter<string>;
+  @Event({ eventName: 'entry-clicked' }) entryClicked: EventEmitter<string>;
   @Prop() apiBase: string;
   @Prop() ambulanceId: string;
   @State() errorMessage: string;
@@ -16,16 +16,14 @@ export class AmbAmbulanceWlList {
 
   private async getWaitingPatientsAsync(): Promise<WaitingListEntry[]> {
     try {
-      const response = await
-        AmbulanceWaitingListApiFactory(undefined, this.apiBase).
-          getWaitingListEntries(this.ambulanceId)
+      const response = await AmbulanceWaitingListApiFactory(undefined, this.apiBase).getWaitingListEntries(this.ambulanceId);
       if (response.status < 299) {
         return response.data;
       } else {
-        this.errorMessage = `Cannot retrieve list of waiting patients: ${response.statusText}`
+        this.errorMessage = `Cannot retrieve list of waiting patients: ${response.statusText}`;
       }
     } catch (err: any) {
-      this.errorMessage = `Cannot retrieve list of waiting patients: ${err.message || "unknown"}`
+      this.errorMessage = `Cannot retrieve list of waiting patients: ${err.message || 'unknown'}`;
     }
     return [];
   }
@@ -37,19 +35,22 @@ export class AmbAmbulanceWlList {
   render() {
     return (
       <Host>
-              {this.errorMessage
-        ? <div class="error">{this.errorMessage}</div>
-        :
-        <md-list>
-        {this.waitingPatients.map((patient, index) =>
-            <md-list-item onClick={ () => this.entryClicked.emit(index.toString())}>
-            <div slot="headline">{patient.name}</div>
-            <div slot="supporting-text">{"Predpokladaný vstup: " + this.isoDateToLocale(patient.estimatedStart)}</div>
-            <md-icon slot="start">person</md-icon>
-        </md-list-item>
+        {this.errorMessage ? (
+          <div class="error">{this.errorMessage}</div>
+        ) : (
+          <md-list>
+            {this.waitingPatients.map(patient => (
+              <md-list-item onClick={() => this.entryClicked.emit(patient.id)}>
+                <div slot="headline">{patient.name}</div>
+                <div slot="supporting-text">{'Predpokladaný vstup: ' + this.isoDateToLocale(patient.estimatedStart)}</div>
+                <md-icon slot="start">person</md-icon>
+              </md-list-item>
+            ))}
+          </md-list>
         )}
-        </md-list>
-        }
+        <md-filled-icon-button class="add-button" onclick={() => this.entryClicked.emit('@new')}>
+          <md-icon>add</md-icon>
+        </md-filled-icon-button>
       </Host>
     );
   }

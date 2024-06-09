@@ -1,19 +1,39 @@
 {
-    "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
-    "generator-cli": {
-        "useDocker": true,
-        "version": "6.6.0",
-        "generators": {
-            "ambulance-wl": {
-                "generatorName": "typescript-axios",
-                "glob": "api/ambulance-wl.openapi.yaml",
-                "output": "#{cwd}/src/api/ambulance-wl",
-                "additionalProperties": {
-                    "supportsES6": "true",
-                    "withInterfaces": true,
-                    "enablePostProcessFile": true
-                }
-            }
+  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "generator-cli": {
+    "useDocker": true,
+    "version": "6.6.0",
+    "generators": {
+      "ambulance-wl": {
+        "generatorName": "typescript-axios",
+        "glob": "api/ambulance-wl.openapi.yaml",
+        "output": "#{cwd}/src/api/ambulance-wl",
+        "additionalProperties": {
+          "supportsES6": "true",
+          "withInterfaces": true,
+          "enablePostProcessFile": true
         }
+      },
+      "vaccination": {
+        "generatorName": "typescript-axios",
+        "glob": "api/vaccination.openapi.yaml",
+        "output": "#{cwd}/src/api/vaccination",
+        "additionalProperties": {
+          "supportsES6": "true",
+          "withInterfaces": true,
+          "enablePostProcessFile": true
+        }
+      },
+      "medical-records": {
+        "generatorName": "typescript-axios",
+        "glob": "api/medical-records.openapi.yaml",
+        "output": "#{cwd}/src/api/medical-records",
+        "additionalProperties": {
+          "supportsES6": "true",
+          "withInterfaces": true,
+          "enablePostProcessFile": true
+        }
+      }
     }
- }
+  }
+}

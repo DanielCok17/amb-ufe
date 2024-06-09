@@ -57,9 +57,13 @@ export class AmbAmbulanceWlApp {
     return (
       <Host>
         {element === 'editor' ? (
-          <amb-ambulance-wl-editor entry-id={entryId} oneditor-closed={() => navigate('./list')}></amb-ambulance-wl-editor>
+          <amb-ambulance-wl-editor entry-id={entryId} ambulance-id={this.ambulanceId} api-base={this.apiBase} oneditor-closed={() => navigate('./list')}></amb-ambulance-wl-editor>
         ) : (
-          <amb-ambulance-wl-list  ambulance-id={this.ambulanceId} api-base={this.apiBase} onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } ></amb-ambulance-wl-list>
+          <amb-ambulance-wl-list
+            ambulance-id={this.ambulanceId}
+            api-base={this.apiBase}
+            onentry-clicked={(ev: CustomEvent<string>) => navigate('./entry/' + ev.detail)}
+          ></amb-ambulance-wl-list>
         )}
       </Host>
     );

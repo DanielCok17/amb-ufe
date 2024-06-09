@@ -12,6 +12,8 @@ export namespace Components {
         "basePath": string;
     }
     interface AmbAmbulanceWlEditor {
+        "ambulanceId": string;
+        "apiBase": string;
         "entryId": string;
     }
     interface AmbAmbulanceWlList {
@@ -22,7 +24,6 @@ export namespace Components {
         "allergyId": string;
     }
     interface AmbMedRecordsAccess {
-        "patientId": string;
     }
     interface AmbMedicalApp {
         "basePath": string;
@@ -130,6 +131,8 @@ declare namespace LocalJSX {
         "basePath"?: string;
     }
     interface AmbAmbulanceWlEditor {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
         "entryId"?: string;
         "onEditor-closed"?: (event: AmbAmbulanceWlEditorCustomEvent<string>) => void;
     }
@@ -142,7 +145,6 @@ declare namespace LocalJSX {
         "allergyId"?: string;
     }
     interface AmbMedRecordsAccess {
-        "patientId"?: string;
     }
     interface AmbMedicalApp {
         "basePath"?: string;

@@ -1,0 +1,172 @@
+# openapi: 3.0.0
+# servers:
+#   - description: Cluster Endpoint
+#     url: /api
+# info:
+#   description: Vaccination Records management for Web-In-Cloud system
+#   version: "1.0.0"
+#   title: Vaccination Records Api
+#   contact:
+#     email: <your_email>
+#   license:
+#     name: CC BY 4.0
+#     url: "https://creativecommons.org/licenses/by/4.0/"
+# tags:
+#  - name: vaccinationRecords
+#    description: Vaccination Records API
+# paths:
+#   /vaccination-records:
+#     get:
+#       tags:
+#         - vaccinationRecords
+#       summary: Retrieves the vaccination records
+#       operationId: getVaccinationRecords
+#       description: Get list of vaccination records
+#       responses:
+#         "200":
+#           description: A list of vaccination records
+#           content:
+#             application/json:
+#               schema:
+#                 type: array
+#                 items:
+#                   $ref: "#/components/schemas/VaccinationRecord"
+#               examples:
+#                 response:
+#                   $ref: "#/components/examples/VaccinationRecordsExample"
+#         "404":
+#           description: No vaccination records found
+#     post:
+#       tags:
+#         - vaccinationRecords
+#       summary: Records a new vaccination
+#       operationId: recordVaccination
+#       description: Record a new vaccination
+#       requestBody:
+#         description: Vaccination record to add
+#         required: true
+#         content:
+#           application/json:
+#             schema:
+#               $ref: "#/components/schemas/VaccinationRecord"
+#             examples:
+#               record:
+#                 $ref: "#/components/examples/VaccinationRecordExample"
+#       responses:
+#         "201":
+#           description: Vaccination record created successfully
+#         "400":
+#           description: Invalid input
+# components:
+#   schemas:
+#     VaccinationRecord:
+#       type: object
+#       required:
+#         - date
+#         - vaccineType
+#         - dose
+#         - manufacturer
+#         - batchNumber
+#         - sideEffects
+#       properties:
+#         date:
+#           type: string
+#           format: date
+#           example: "2023-01-15"
+#         vaccineType:
+#           type: string
+#           example: "COVID-19"
+#         dose:
+#           type: string
+#           example: "First dose"
+#         manufacturer:
+#           type: string
+#           example: "Pfizer"
+#         batchNumber:
+#           type: string
+#           example: "12345"
+#         sideEffects:
+#           type: string
+#           example: "Mild fever"
+#       example:
+#         $ref: "#/components/examples/VaccinationRecordExample"
+#   examples:
+#     VaccinationRecordExample:
+#       summary: Example vaccination record
+#       description: Example of a vaccination record
+#       value:
+#         date: "2023-01-15"
+#         vaccineType: "COVID-19"
+#         dose: "First dose"
+#         manufacturer: "Pfizer"
+#         batchNumber: "12345"
+#         sideEffects: "Mild fever"
+#     VaccinationRecordsExample:
+#       summary: List of vaccination records
+#       description: Example list of vaccination records
+#       value:
+#         - date: "2023-01-15"
+#           vaccineType: "COVID-19"
+#           dose: "First dose"
+#           manufacturer: "Pfizer"
+#           batchNumber: "12345"
+#           sideEffects: "Mild fever"
+#         - date: "2023-02-15"
+#           vaccineType: "COVID-19"
+#           dose: "Second dose"
+#           manufacturer: "Pfizer"
+#           batchNumber: "67890"
+#           sideEffects: "None"
+
+openapi: 3.0.0
+info:
+  description: Vaccination Records API
+  version: 1.0.0
+  title: Vaccination Records API
+servers:
+  - url: http://localhost:5005/api
+paths:
+  /vaccination-records:
+    get:
+      summary: Get all vaccination records
+      operationId: getVaccinationRecords
+      responses:
+        '200':
+          description: A list of vaccination records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VaccinationRecord'
+    post:
+      summary: Create a new vaccination record
+      operationId: createVaccinationRecord
+      requestBody:
+        description: Vaccination record to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VaccinationRecord'
+      responses:
+        '201':
+          description: Vaccination record created
+components:
+  schemas:
+    VaccinationRecord:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        vaccineType:
+          type: string
+        dose:
+          type: string
+        manufacturer:
+          type: string
+        batchNumber:
+          type: string
+        sideEffects:
+          type: string

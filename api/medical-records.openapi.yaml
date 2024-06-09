@@ -1,0 +1,126 @@
+openapi: 3.0.0
+servers:
+  - description: Local development server
+    url: /api
+info:
+  description: Medical Records management for Web-In-Cloud system
+  version: "1.0.0"
+  title: Medical Records API
+  contact:
+    email: <your_email>
+  license:
+    name: CC BY 4.0
+    url: "https://creativecommons.org/licenses/by/4.0/"
+tags:
+  - name: medicalRecords
+    description: Medical Records API
+
+paths:
+  "/medical-records":
+    get:
+      tags:
+        - medicalRecords
+      summary: Provides all medical records
+      operationId: getAllMedicalRecords
+      description: Get the list of all medical records
+      responses:
+        "200":
+          description: List of all medical records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MedicalRecord"
+              examples:
+                response:
+                  $ref: "#/components/examples/MedicalRecordsExample"
+        "404":
+          description: No medical records found
+
+  "/medical-records/{patientId}":
+    get:
+      tags:
+        - medicalRecords
+      summary: Provides the medical records for a patient
+      operationId: getMedicalRecords
+      description: By using patientId you get the list of medical records
+      parameters:
+        - in: path
+          name: patientId
+          description: pass the id of the particular patient
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: value of the medical records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MedicalRecordDetail"
+              examples:
+                response:
+                  $ref: "#/components/examples/MedicalRecordDetailsExample"
+        "404":
+          description: Patient with such ID does not exist
+
+components:
+  schemas:
+    MedicalRecord:
+      type: object
+      required: [id, details]
+      properties:
+        id:
+          type: string
+          example: "1"
+          description: Unique id of the medical record
+        details:
+          type: string
+          example: "Record 1 details"
+          description: Summary of the medical record
+      example:
+        $ref: "#/components/examples/MedicalRecordExample"
+
+    MedicalRecordDetail:
+      type: object
+      required: [details]
+      properties:
+        details:
+          type: string
+          example: "Detailed info about Record 1"
+          description: Detailed information of the medical record
+      example:
+        $ref: "#/components/examples/MedicalRecordDetailExample"
+
+  examples:
+    MedicalRecordExample:
+      summary: Sample medical record
+      description: Example of a medical record
+      value:
+        id: "1"
+        details: "Record 1 details"
+    MedicalRecordsExample:
+      summary: List of medical records 
+      description: Example list of medical records for a patient
+      value:
+      - id: "1"
+        details: "Record 1 details"
+      - id: "2"
+        details: "Record 2 details"
+      - id: "3"
+        details: "Record 3 details"
+    MedicalRecordDetailExample:
+      summary: Sample medical record detail
+      description: Example of a detailed medical record
+      value:
+        details: "Detailed info about Record 1"
+    MedicalRecordDetailsExample:
+      summary: List of medical record details
+      description: Example list of medical record details for a patient
+      value:
+      - details: "Detailed info about Record 1"
+      - details: "Detailed info about Record 2"
+      - details: "Detailed info about Record 3"
