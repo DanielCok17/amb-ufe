@@ -12,6 +12,9 @@ describe('amb-delete-allergy-record', () => {
         <mock:shadow-root>
           <h2>Delete Allergy Record</h2>
           <md-filled-button>Delete</md-filled-button>
+          <md-filled-button>
+          Back to Home
+        </md-filled-button>
         </mock:shadow-root>
       </amb-delete-allergy-record>
     `);

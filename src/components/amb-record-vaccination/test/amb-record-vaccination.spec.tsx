@@ -21,6 +21,9 @@ describe('amb-record-vaccination', () => {
             <md-filled-text-field label="Side Effects" name="sideEffects"></md-filled-text-field>
             <md-filled-button type="submit">Record</md-filled-button>
           </form>
+          <md-filled-button>
+          Back to Home
+        </md-filled-button>
         </mock:shadow-root>
       </amb-record-vaccination>
     `);

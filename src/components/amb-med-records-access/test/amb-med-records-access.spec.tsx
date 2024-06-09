@@ -16,6 +16,9 @@ describe('amb-med-records-access', () => {
             <li>Record 2 details</li>
             <li>Record 3 details</li>
           </ul>
+          <md-filled-button>
+          Back to Home
+        </md-filled-button>
         </mock:shadow-root>
       </amb-med-records-access>
     `);
